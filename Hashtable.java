@@ -23,15 +23,18 @@ public class Hashtable{
 
 	private float load_threshold = (float)0.5;
 
+
+   //this function creates the Hashtable 
 	public Hashtable(){
 		bucketArray = new ArrayList<>();
-		numBuckets = 2027;
+		numBuckets = 2027; //initialize the amount of buckets to 2027
 		size = 0;
 
 		for(int i=0; i<numBuckets; i++)
 			bucketArray.add(null);
 	}
 
+   //returns the size
 	public int getSize(){
 		return size;
 	}
@@ -42,6 +45,7 @@ public class Hashtable{
 		return false;
 	}
 
+   //creates a unique hash code
 	public int getHash(String key){
 		return Math.abs(key.hashCode());
 	}
@@ -50,6 +54,7 @@ public class Hashtable{
 		return getHash(key) % numBuckets;
 	}
 
+   //goes through the structure and checks if the key is somewhere in it
 	public boolean containsKey(String key){
 		HashNode head = bucketArray.get(getIndex(key));
 
@@ -76,7 +81,7 @@ public class Hashtable{
 	}
 
 
-	
+
 	public void put(String key, String value){
 		int index = getIndex(key);
 		HashNode head = bucketArray.get(index);
